@@ -2,17 +2,22 @@
 const express = require("express");
 const app = express();
 
+const path = require('path');
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 // Express Routes
-app.get("/Home", function(req, res){
-    res.render("homepage.html");
+app.get("/", function(req, res){
+    res.sendFile("/views/homepage.ejs");
 });
 
-app.get("/Resume", function(req, res){
-    res.render("resume.html");
+app.get("/education", function(req, res){
+    res.sendFile("/views/education.ejs");
 });
 
-app.get("/Contact Us", function(req, res){
-    res.render("contactUs.html");
+app.get("/contactUs", function(req, res){
+    res.sendFile("/views/contactUs.ejs");
 });
 
 // Error Route - Must be last
